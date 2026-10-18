@@ -1,0 +1,101 @@
+/* The layout controls are opt-in. The ordinary portfolio keeps its own layout. */
+#layout-editor[hidden], #layout-output[hidden] { display: none !important; }
+#layout-editor {
+  position: fixed;
+  z-index: 1000;
+  right: 20px;
+  top: 96px;
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px;
+  border: 1px solid rgba(94, 231, 207, .4);
+  border-radius: 12px;
+  background: rgba(7, 27, 32, .97);
+  color: #edf8f5;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .28);
+  font-family: var(--body-font, sans-serif);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-align: left;
+}
+.layout-editor-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.layout-editor-header h2 { flex: 1; }
+#layout-editor #layout-collapse { min-width: 32px; min-height: 32px; padding: 0; }
+#layout-editor.is-collapsed > :not(.layout-editor-header) { display: none !important; }
+#layout-editor.is-collapsed .layout-editor-header { margin-bottom: 0; }
+#layout-editor h2 { margin: 0; font-family: inherit; font-size: 18px; font-weight: 650; line-height: 1.3; letter-spacing: -.02em; }
+#layout-editor button, #layout-editor select, #layout-editor textarea { font: inherit; letter-spacing: 0; }
+#layout-editor button {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid rgba(179, 223, 213, .25);
+  border-radius: 5px;
+  background: #173638;
+  color: #edf8f5;
+  cursor: pointer;
+  line-height: 1.25;
+}
+#layout-editor button:hover { background: #214748; border-color: #71dac5; }
+#layout-editor button:focus-visible, #layout-editor select:focus-visible, #layout-output:focus-visible { outline: 2px solid #65e4cf; outline-offset: 3px; }
+#layout-editor #layout-close { min-width: 32px; min-height: 32px; padding: 0; border-color: transparent; background: transparent; color: #b1c9c4; font-size: 25px; }
+.layout-editor-controls label { display: block; margin-bottom: 7px; color: #c2d9d3; font-size: 12px; }
+.layout-editor-target { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+#layout-target { min-width: 0; width: 100%; min-height: 38px; padding: 7px 28px 7px 9px; border: 1px solid rgba(179, 223, 213, .28); border-radius: 5px; background: #102d31; color: #edf8f5; }
+#layout-edit-toggle { white-space: nowrap; }
+.layout-editor-help { margin: 13px 0; color: #bed2cd; font-size: 12px; line-height: 1.5; }
+.layout-editor-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+#layout-editor #layout-copy { border-color: #58d6bc; background: #49cdb3; color: #062421; font-weight: 650; }
+#layout-editor #layout-copy:hover { background: #70e3ca; }
+.layout-editor-note { margin: 13px 0 0; color: #9bb7b0; font-size: 11px; line-height: 1.5; }
+#layout-status { min-height: 1.4em; margin: 10px 0 0; color: #8be6d0; font-size: 12px; }
+#layout-output { display: block; width: 100%; min-height: 115px; margin-top: 12px; padding: 9px; border: 1px solid #40736a; border-radius: 5px; background: #051b20; color: #c5f3e7; font-size: 11px; line-height: 1.4; resize: vertical; }
+.layout-editor-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+.layout-movable, .layout-refraction-movable { translate: calc(var(--layout-base-x, 0px) + var(--layout-x, 0px)) calc(var(--layout-base-y, 0px) + var(--layout-y, 0px)); }
+.layout-editing .hero-media, .layout-editing .portrait-scene { pointer-events: none; }
+.layout-editing .layout-movable {
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.layout-editing .layout-movable:active { cursor: grabbing; }
+.layout-editing .layout-movable img { pointer-events: none; -webkit-user-drag: none; }
+.layout-editing .layout-selected { outline: 2px solid #80ffe6; outline-offset: 7px; }
+.layout-editing .layout-selected::before {
+  content: attr(data-layout-label);
+  position: absolute;
+  z-index: 20;
+  top: -31px;
+  left: -2px;
+  padding: 4px 7px;
+  border-radius: 3px;
+  background: #80ffe6;
+  color: #052d29;
+  font-family: var(--body-font, sans-serif);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-shadow: none;
+  -webkit-text-fill-color: #052d29;
+  -webkit-text-stroke: 0;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.layout-editing .hero-name, .layout-editor-open .hero-name { animation-play-state: paused !important; }
+.layout-editing .name-mask, .layout-editor-open .name-mask { animation-play-state: paused !important; }
+.layout-editing .portrait-scene, .layout-editor-open .portrait-scene { transform: none !important; }
+.layout-editing .hero-refraction { visibility: hidden !important; }
+
+@media (max-width: 580px) {
+  #layout-editor { right: 12px; top: auto; bottom: 12px; padding: 14px; width: 286px; max-height: min(390px, calc(100dvh - 24px)); }
+  #layout-editor button { min-height: 44px; }
+  .layout-editor-header { margin-bottom: 12px; }
+  .layout-editor-help { margin-block: 10px; }
+}

@@ -1,0 +1,99 @@
+/* Channel snapshots keep their original proportions; each opens the full image. */
+.analytics-section {
+  position: relative;
+  z-index: 6;
+  padding: clamp(2.5rem, 4vw, 3.5rem) var(--gutter) 2rem;
+}
+
+.analytics-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.analytics-heading h2 {
+  max-width: 20ch;
+  font-size: var(--statement);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.04em;
+}
+
+.analytics-note {
+  max-width: 35ch;
+  color: var(--soft-ink);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  align-items: start;
+}
+
+.analytics-snapshot { min-width: 0; }
+
+.analytics-image {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 2.05;
+  overflow: hidden;
+  background: #0f0f0f;
+  cursor: zoom-in;
+  outline-offset: 6px;
+}
+
+.analytics-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.analytics-image:focus-visible { outline: 3px solid var(--accent); }
+
+.analytics-snapshot figcaption { padding-top: 1rem; }
+
+.analytics-snapshot h3 {
+  color: var(--ink);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -.02em;
+}
+
+.analytics-date {
+  margin-top: .45rem;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.analytics-period {
+  margin-top: .25rem;
+  color: var(--soft-ink);
+  font-size: var(--caption);
+  line-height: 1.6;
+}
+
+@media (max-width: 780px) {
+  .analytics-heading { align-items: flex-start; }
+  .analytics-note { max-width: 27ch; }
+  .analytics-grid { gap: 1.25rem; }
+}
+
+@media (max-width: 580px) {
+  .analytics-section { padding-top: 2rem; padding-bottom: 1.5rem; }
+  .analytics-heading { display: block; margin-bottom: 1.5rem; }
+  .analytics-note { margin-top: .85rem; max-width: 32ch; }
+  .analytics-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .analytics-snapshot figcaption { padding-top: 1rem; }
+}

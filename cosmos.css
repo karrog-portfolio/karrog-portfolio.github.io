@@ -1,0 +1,128 @@
+/* Karrog's avatar mint becomes an atmosphere behind the existing composition.
+   The client explicitly requested luminous circular blur and a field of stars. */
+:root {
+  --ground: #061116;
+  --surface: #102a2d;
+  --soft-ink: #c2d0cc;
+  --space-deep: #061116;
+  --space-field: #0b2b2d;
+  color-scheme: dark;
+}
+
+body { background: var(--space-deep); isolation: isolate; }
+main { position: relative; z-index: 1; }
+
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+}
+.cosmos-nebula, .cosmos-stars { position: absolute; inset: 0; }
+.nebula-orb { position: absolute; display: block; aspect-ratio: 1; border-radius: 50%; }
+.orb-primary {
+  width: clamp(650px, 77vw, 1200px);
+  top: -26%;
+  right: -24%;
+  background: radial-gradient(circle, rgb(76 217 186 / .52) 0%, rgb(34 171 157 / .28) 25%, rgb(17 111 114 / .12) 46%, transparent 69%); /* taste-skill-ignore: the user explicitly requested circular blurred mint glows. */
+  filter: blur(24px);
+  animation: nebula-primary 84s ease-in-out infinite alternate;
+}
+.orb-secondary {
+  width: clamp(550px, 56vw, 900px);
+  left: -24%;
+  top: 31%;
+  background: radial-gradient(circle, rgb(76 217 186 / .38) 0%, rgb(16 149 132 / .23) 24%, rgb(12 93 92 / .09) 47%, transparent 69%); /* taste-skill-ignore: the requested mint aura supports the introduction at the left. */
+  filter: blur(32px);
+  animation: nebula-secondary 103s ease-in-out infinite alternate;
+}
+.orb-distant {
+  width: clamp(480px, 48vw, 760px);
+  top: 48%;
+  left: 28%;
+  background: radial-gradient(circle, rgb(30 127 142 / .24) 0%, rgb(28 110 128 / .12) 31%, transparent 68%); /* taste-skill-ignore: a distant teal atmospheric glow is part of the requested space scene. */
+  filter: blur(32px);
+  animation: nebula-distant 96s ease-in-out infinite alternate;
+}
+
+.star-layer {
+  position: absolute;
+  inset: -3%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.stars-far { background-image: url("assets/stars-far.svg"); opacity: .72; animation: stars-drift-far 110s linear infinite alternate; }
+.stars-mid { background-image: url("assets/stars-mid.svg"); opacity: .72; animation: stars-breathe 11s ease-in-out infinite alternate, stars-drift-mid 83s linear infinite alternate; }
+.stars-near { background-image: url("assets/stars-near.svg"); opacity: .9; animation: stars-near-breathe 8s ease-in-out infinite alternate, stars-drift-near 61s linear infinite alternate; }
+.star-beacon {
+  position: absolute;
+  display: block;
+  width: 42px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(225 255 248 / .92) 0 2%, rgb(142 246 222 / .3) 4%, rgb(76 217 186 / .1) 14%, transparent 57%); /* taste-skill-ignore: two gentle luminous stars in the user-requested star field. */
+  animation: beacon-breathe 9s ease-in-out infinite alternate;
+}
+.star-beacon::before, .star-beacon::after { content: ""; position: absolute; background: #d4fff1; opacity: .68; }
+.star-beacon::before { width: 1px; height: 15px; left: calc(50% - .5px); top: calc(50% - 7.5px); }
+.star-beacon::after { height: 1px; width: 15px; top: calc(50% - .5px); left: calc(50% - 7.5px); }
+.beacon-one { left: 28%; top: 18%; }
+.beacon-two { right: 8%; top: 70%; width: 32px; animation-delay: -5s; }
+.beacon-two::before { height: 11px; top: calc(50% - 5.5px); }
+.beacon-two::after { width: 11px; left: calc(50% - 5.5px); }
+
+/* Transparent fields allow the same universe to carry through the full page. */
+.work-section { background: transparent; }
+.work-hint { color: var(--ink); }
+.about-section { background: rgb(11 43 45 / .73); }
+.site-footer { background: rgb(5 27 32 / .86); color: var(--ink); }
+.footer-name { color: var(--accent); }
+.filter { background: rgb(16 42 45 / .95); }
+.filter.is-active { background: var(--ink); }
+
+@keyframes nebula-primary {
+  from { transform: translate3d(-2%, -1%, 0) scale(.98); }
+  to { transform: translate3d(-7%, 5%, 0) scale(1.1); }
+}
+@keyframes nebula-secondary {
+  from { transform: translate3d(-2%, 4%, 0) scale(1); }
+  to { transform: translate3d(9%, -5%, 0) scale(1.12); }
+}
+@keyframes nebula-distant {
+  from { transform: translate3d(0, 0, 0) scale(.96); }
+  to { transform: translate3d(-8%, -7%, 0) scale(1.12); }
+}
+@keyframes stars-breathe { from { opacity: .46; } to { opacity: .8; } }
+@keyframes stars-near-breathe { from { opacity: .46; } to { opacity: .96; } }
+@keyframes stars-drift-far { from { transform: translate3d(.4%, -.4%, 0); } to { transform: translate3d(-.4%, .4%, 0); } }
+@keyframes stars-drift-mid { from { transform: translate3d(.9%, -.9%, 0); } to { transform: translate3d(-.9%, .9%, 0); } }
+@keyframes stars-drift-near { from { transform: translate3d(1.6%, -1.6%, 0); } to { transform: translate3d(-1.6%, 1.6%, 0); } }
+@keyframes beacon-breathe { from { opacity: .36; transform: scale(.88); } to { opacity: .94; transform: scale(1.05); } }
+
+@media (max-width: 780px) {
+  .orb-primary { width: 900px; right: -63%; top: -18%; filter: blur(18px); }
+  .orb-secondary { width: 660px; left: -55%; top: 38%; filter: blur(22px); }
+  .orb-distant { width: 600px; left: 4%; top: 47%; filter: blur(22px); }
+  .beacon-one { left: 25%; top: 19%; }
+}
+@media (max-width: 580px) {
+  .orb-primary { width: 650px; right: -92%; top: -11%; filter: blur(12px); }
+  .orb-secondary { width: 530px; left: -88%; top: 38%; filter: blur(16px); }
+  .orb-distant { width: 450px; left: -7%; top: 54%; filter: blur(16px); }
+  .stars-far { opacity: .63; }
+  .stars-mid { animation-duration: 13s, 83s; }
+  .stars-near { animation-duration: 10s, 61s; }
+  .beacon-one { left: 23%; top: 20%; width: 32px; }
+  .beacon-two { right: 9%; top: 73%; width: 26px; }
+}
+
+.motion-paused .cosmos *, .no-motion .cosmos *, .space-suspended .cosmos *,
+.page-hidden .cosmos *, .player-open .cosmos *,
+.motion-paused .cosmos *::before, .motion-paused .cosmos *::after,
+.space-suspended .cosmos *::before, .space-suspended .cosmos *::after { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  .cosmos *, .cosmos *::before, .cosmos *::after { animation: none !important; }
+}
