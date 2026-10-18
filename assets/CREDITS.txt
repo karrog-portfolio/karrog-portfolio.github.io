@@ -1,0 +1,33 @@
+KARROG PORTFOLIO — ASSET CREDITS
+
+YouTube channel: Karrog
+https://www.youtube.com/@KarroWuDao
+
+Video thumbnail images (public YouTube thumbnail endpoints):
+short-1.jpg — https://i.ytimg.com/vi/zXhjokJYmfA/oar2.jpg
+short-2.jpg — https://i.ytimg.com/vi/ce_by01bKfA/oar2.jpg
+short-3.jpg — https://i.ytimg.com/vi/FDhbvTyuISc/oar2.jpg
+short-4.jpg — https://i.ytimg.com/vi/9_M4h0FE3lw/oar2.jpg
+short-5.jpg — https://i.ytimg.com/vi/t_BQNRheD6o/oar2.jpg
+short-6.jpg — https://i.ytimg.com/vi/xuLqxyFg5uY/oar2.jpg
+
+Font: Barlow Condensed, weight 900
+Local files: display.woff2, display-vietnamese.woff2, display-latin-ext.woff2
+Official family source: https://github.com/google/fonts/tree/main/ofl/barlowcondensed
+License: SIL Open Font License 1.1; see OFL-BarlowCondensed.txt
+Official license source: https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt
+
+Avatar: Karrog official public YouTube channel avatar, preserved unmodified.
+Channel: https://www.youtube.com/@KarroWuDao
+File: channel-avatar.jpg (900 x 900)
+Image source: https://yt3.googleusercontent.com/OWVZbV6yhh_XHdNShkUunMl9IoF09GeLEvwEdQU4HMQHirmmhSMGCSV-rUqjkIFgwkfPDKX-paM=s900-c-k-c0x00ffffff-no-rj
+
+Font: Manrope, variable weights 400–800
+Local files: body.woff2, body-vietnamese.woff2, body-latin-ext.woff2
+Official family source: https://github.com/google/fonts/tree/main/ofl/manrope
+License: SIL Open Font License 1.1; see OFL-Manrope.txt
+Official license source: https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt
+
+Font download source: Google Fonts CSS API and fonts.gstatic.com.
+Exact font file URLs and unicode ranges are recorded in google-fonts-source.css.
+https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Manrope:wght@400..800&display=swap
